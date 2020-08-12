@@ -1,8 +1,4 @@
-/.DS_Store
-/ADS A* Report.pdf
-/AStar$1.class
-/AStar$2.class
-/AStar$3.class
-/AStar$4.class
-/AStar.class
+.DS_Store
+*.pdf
+*.class
 /screens
