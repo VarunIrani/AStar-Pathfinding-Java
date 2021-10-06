@@ -1,19 +1,22 @@
 package cell;
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Cell {
-  private int x, y;
+  private final int x;
+  private final int y;
   public int w, h;
   public int fCost, gCost, hCost, i, j;
-  public ArrayList<Cell> neighbors = new ArrayList<Cell>();
-  public Cell previous;
+  public ArrayList<Cell> neighbors = new ArrayList<>();
+  public Cell previous = null;
   public boolean wall, start, end;
-  private static HashMap<Point, int[]> pointMap = new HashMap<Point, int[]>();
+  private static final HashMap<Point, int[]> pointMap = new HashMap<>();
   public Color color;
 
-  private int width, height, rows = 30, cols = 30;
+  private final int rows = 30;
+  private final int cols = 30;
 
   public Cell(int i, int j) {
     this.i = i;
@@ -24,15 +27,13 @@ public class Cell {
     this.wall = false;
     this.start = false;
     this.end = false;
-    this.previous = null;
 
     GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
     GraphicsDevice device = graphics.getDefaultScreenDevice();
-    width = device.getDisplayMode().getWidth();
-    height = width;
+    int width = device.getDisplayMode().getWidth();
 
     this.w = width / rows;
-    this.h = height / cols;
+    this.h = width / cols;
 
     this.w *= 0.55;
     this.h *= 0.55;
@@ -49,7 +50,6 @@ public class Cell {
   }
 
   /**
-   * @param click
    * @return int[]
    */
   public static int[] clickedCell(Point click) {
@@ -64,7 +64,6 @@ public class Cell {
   }
 
   /**
-   * @param grid
    */
   public void addNeighbors(Cell[][] grid) {
     int i = this.i;
@@ -98,7 +97,6 @@ public class Cell {
   }
 
   /**
-   * @param g_
    */
   public void show(Graphics g_) {
     Graphics2D g = (Graphics2D) g_;

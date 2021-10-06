@@ -2,3 +2,4 @@
 *.pdf
 *.class
 /screens
+*.json
